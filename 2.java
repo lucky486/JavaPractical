@@ -145,3 +145,86 @@ public class program {
         System.out.println("\nAbove information is for issue : "+m1.receiveissue());
     }
 }
+
+/*
+Output :
+
+---------------Book Data-------------------------
+
+Enter Title:
+Ancient History
+
+Enter Price:
+235
+
+Enter Number of copies sold:
+150
+
+Enter Book Author:
+Ram Sharma
+
+Title: Anicent History
+
+Price: 235
+
+Number of Copies sold: 150
+
+Book Author: Ram Sharma
+
+How many Copies of book you want to order ?
+50
+
+Total Sale Copy for Book!!!
+
+Title:  Ancient History
+
+Price:  235.0
+
+Number of Copies sold: 200
+
+Book Author: Ram Sharma
+
+Total Sale for Ram Sharma is 47000.0
+
+Total Copies Sold : 200
+
+
+--------------Magazine Data-----------------------
+
+Enter Title :
+Science and Fiction
+
+Enter Price:
+65
+
+Enter Number of copies sold:
+600
+
+Enter Magazine Issue:
+12
+
+Title: Science and Fiction
+
+Price: 65.0
+
+Magazine Issue: 600
+
+Quantity of magazine you want to order ?
+50
+
+Total Sale Copy For Magazine!!!
+
+Title: Science and Fiction
+
+Price: 65.0
+
+Number of Copies sold: 650
+
+Total Sale for 12 is 42250.0
+
+Above Information is for issue:12
+
+
+
+
+*/ 
