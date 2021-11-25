@@ -1,35 +1,44 @@
 import java.util.Scanner;
+
 class Publications
 {
     String Title;
     double Price;
     int Copies;
+    
+    // Publications Class Constructor for setting default values
     public Publications()
     {
         Title = "";
         Price=0.0;
         Copies = 0;
     }
+
+    // Declaring a method which will get overridden by the inherited class
     public void saleCopy()
     {
         System.out.println("\nSeparate Sale Copy for Book and Magazine!!!");
     }
+
+    // Declaring method to return no. of copies sold.
     public int get_Copies()
     {
         return Copies;
     }
+
+    // Common method for taking input
     public void input()
     {
-        Scanner in_obj = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("\nEnter Title:\t");
-        Title = in_obj.nextLine();
+        Title = sc.nextLine();
         System.out.println("\nEnter Price:\t");
-        Price = in_obj.nextDouble();
-        in_obj.close();    
+        Price = sc.nextDouble();
         System.out.println("\nEnter Number of copies sold:\t");
-        Copies = in_obj.nextInt();
-        in_obj.close();    
+        Copies = sc.nextInt();   
     }
+
+    // Method to display data
     public void display()
     {
         System.out.println("\nTitle:\t"+Title);
@@ -37,14 +46,18 @@ class Publications
         System.out.println("\nNumber of Copies sold:\t"+Copies);
     }
 }
-class Book1 extends Publications
+
+class Book extends Publications
 {
     String author;
-    public Book1()
+
+    //Book Class Constructor for setting default values
+    public Book()
     {
         super();
         author="";
     }
+
     @Override
     public void saleCopy()
     {
@@ -52,24 +65,23 @@ class Book1 extends Publications
         total_sale = Price* Copies;
         System.out.println("\nTotal Sale Copy for Book!!!");
         display_book();
-        System.out.println("\nTotal Sales for "+ author + "is" + total_sale);
+        System.out.println("\nTotal Sales for "+ author + " is " + total_sale);
     }
+
     public void orderCopies()
     {
         int n;
-        Scanner in_obj = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("\nHow many Copies of book you want to order ?");
-        n = in_obj.nextInt();
+        n = sc.nextInt();
         Copies = Copies + n;
-        in_obj.close();
     }
     public void input_book()
     {
         input();
-        Scanner in_obj = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("\nEnter Book Author:");
-        author = in_obj.nextLine();
-        in_obj.close();
+        author = sc.nextLine();
     }
     public void display_book()
     {
@@ -77,6 +89,7 @@ class Book1 extends Publications
         System.out.println("\nBook Author:\t" + author);
     }
 }
+
 class Magazine extends Publications
 {
     int issue;
@@ -89,27 +102,26 @@ class Magazine extends Publications
     public void saleCopy()
     {
         double total_sale = 0;
-        total_sale = Price* Copies;
+        total_sale = Price*Copies;
         System.out.println("\nTotal Sale Copy for Magazine!!!");
         display();
-        System.out.println("\nTotal Sales for "+ issue + "is" + total_sale);
+        System.out.println("\nTotal Sales for "+ issue + " is " + total_sale);
     }
     public void input_mag()
     {
         input();
-        Scanner in_obj = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("\nEnter Magazine Issue:\t");
-        issue = in_obj.nextInt();
-        in_obj.close();
+        issue = sc.nextInt();
+        // sc.close();
     }
     public void orderQty()
     {
         int n;
-        Scanner in_obj = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("\nQuantity of magazine you want to order?");
-        n = in_obj.nextInt();
+        n = sc.nextInt();
         Copies = Copies + n;
-        in_obj.close();
     }
     public int receiveissue()
     {
@@ -123,108 +135,38 @@ class Magazine extends Publications
 }
 public class program {
     public static void main(String[] args) {
-        Book1 b1 = new Book1();
-        Magazine m1 = new Magazine();
-        Publications p1 = new Book1();
 
-        System.out.println("\n---------------Book Data-------------------------");
+        Book b1 = new Book();
+        Publications p1 = new Book();
+
+        System.out.println("\n----------------------Book Data Entry-------------------------");
         b1.input_book();
+        System.out.println("\n------------------Book Data Entry SuccessFul------------------");
         b1.display_book();
+        System.out.println("\n--------------------------------------------------------------");
         b1.orderCopies();
         p1 = b1;
+        System.out.println("\n------------------Modified Details of the Book----------------");
         p1.saleCopy();
         System.out.println("\nTotal Copies Sold : "+p1.get_Copies());
 
-        System.out.println("\n--------------Magazine Data-----------------------");
-        p1 = new Magazine();
+
+        Magazine m1 = new Magazine();
+        Publications t1 = new Magazine();
+
+
+        System.out.println("\n--------------------Magazine Data Entry-----------------------");
+        // p1 = new Magazine();
         m1.input_mag();
+        System.out.println("\n------------------Magazine Data Entry SuccessFul--------------");
         m1.display_mag();
+        System.out.println("\n--------------------------------------------------------------");
         m1.orderQty();
-        p1 = m1;
-        p1.saleCopy();
+        System.out.println("\n--------------------------------------------------------------");
+        t1 = m1;
+        System.out.println("\n--------------Modified Details of the Magazine----------------");
+        t1.saleCopy();
         System.out.println("\nAbove information is for issue : "+m1.receiveissue());
+        System.out.println("\n--------------------------------------------------------------");
     }
 }
-
-/*
-Output :
-
----------------Book Data-------------------------
-
-Enter Title:
-Ancient History
-
-Enter Price:
-235
-
-Enter Number of copies sold:
-150
-
-Enter Book Author:
-Ram Sharma
-
-Title: Anicent History
-
-Price: 235
-
-Number of Copies sold: 150
-
-Book Author: Ram Sharma
-
-How many Copies of book you want to order ?
-50
-
-Total Sale Copy for Book!!!
-
-Title:  Ancient History
-
-Price:  235.0
-
-Number of Copies sold: 200
-
-Book Author: Ram Sharma
-
-Total Sale for Ram Sharma is 47000.0
-
-Total Copies Sold : 200
-
-
---------------Magazine Data-----------------------
-
-Enter Title :
-Science and Fiction
-
-Enter Price:
-65
-
-Enter Number of copies sold:
-600
-
-Enter Magazine Issue:
-12
-
-Title: Science and Fiction
-
-Price: 65.0
-
-Magazine Issue: 600
-
-Quantity of magazine you want to order ?
-50
-
-Total Sale Copy For Magazine!!!
-
-Title: Science and Fiction
-
-Price: 65.0
-
-Number of Copies sold: 650
-
-Total Sale for 12 is 42250.0
-
-Above Information is for issue:12
-
-
-
-
-*/ 
